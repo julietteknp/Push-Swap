@@ -6,7 +6,7 @@
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 17:29:19 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/16 15:25:21 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/16 17:01:15 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -30,6 +30,21 @@ t_stack	*add_front(t_stack **stack, t_stack *new)
 	return (*stack);	
 }
 
+void	add_back(t_stack **stack, t_stack *new)
+{
+	t_stack	*tmp;
+
+	if (*stack == NULL)
+	{
+		return 
+
+	}
+	tmp = *stack;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = tmp;
+	new->next = NULL;
+}
 int	fake_atoi(char *argv)
 {
 	int	result;
@@ -51,21 +66,35 @@ int	fake_atoi(char *argv)
 	return (result * sign);
 }
 
+t_stack	*last_node(t_stack *stack)
+{
+	if (stack == NULL)
+		return (NULL);
+	while (stack->next != NULL)
+	{
+		stack = stack->next;
+	}
+	return (stack);
+}
+
 int	main (int argc, char **argv)
 {
 	if (argc < 3)
 	       return (0);
 	argv++;
-	t_stack *init = new_node(0);
-	printf("%d\n", init->value);
+	t_stack *init = new_node(5);
+	//printf("%d\n", init->value);
+	t_stack *start = init;
 	while (*argv)
 	{	
 		t_stack *node = new_node(fake_atoi(*argv));
 		if (node == NULL)
 			return (1);
-		add_front(&init, node);
+		add_back(&init, node);
 		printf("%d\n", init->value);
 		argv++;
 	}
+	t_stack *last = last_node(start);
+	printf("%d", last->value);
 	return (0);
 }
