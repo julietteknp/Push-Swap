@@ -1,0 +1,54 @@
+<html xmlns:tomboy="http://beatniksoftware.com/tomboy" xmlns:size="http://beatniksoftware.com/tomboy/size" xmlns:link="http://beatniksoftware.com/tomboy/link"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Push Swap</title><style type="text/css">
+	body {  }
+	h1 { font-size: xx-large;
+     	     font-weight: bold;
+     	     border-bottom: 1px solid black; }
+	div.note {
+		   position: relative;
+		   display: block;
+		   padding: 5pt;
+		   margin: 5pt; 
+		   white-space: -moz-pre-wrap; /* Mozilla */
+ 	      	   white-space: -pre-wrap;     /* Opera 4 - 6 */
+ 	      	   white-space: -o-pre-wrap;   /* Opera 7 */
+ 	      	   white-space: pre-wrap;      /* CSS3 */
+ 	      	   word-wrap: break-word;      /* IE 5.5+ */ }
+	</style></head><body><div class="note" id="Push Swap"><a name="push swap"></a><h1>Push Swap</h1>
+cf <span style="color:#555753;text-decoration:underline">t_stack *stack</span>
+
+Listing: 
+1) fonctions utiles listes chainees
+	-new_node
+	-add_front
+	-last_node
+	-add_back
+	-stack_size
+	-clear_stack
+	-print_stack
+	-second_last t_stack    *second_last(t_stack *stack)	retourne avant dernier node
+	-is sorted	int is_sorted(t_stack *stack)	retourne 1 si trie 0 sinon
+	-find_min	t_stack    *find_min(t_stack *stack)	retourne le node avec la plus petite valeur
+	-find max	t_stack    *find_max(t_stack *stack)	retourne le node avec la plus grande valeur
+	-find position	int find_position(t_stack *stack, int value) retourne l’index d’un élément
+	-contains duplicate	int contains_duplicate(t_stack *stack, int value) retourne 1 si doublon 0 sinon
+2) operations 
+	-Swap:
+void    sa(t_stack **a);
+void    sb(t_stack **b);
+void    ss(t_stack **a, t_stack **b);
+	-Push:
+void    pa(t_stack **a, t_stack **b);
+void    pb(t_stack **a, t_stack **b);
+	-Rotate:
+void    ra(t_stack **a);
+void    rb(t_stack **b);
+void    rr(t_stack **a, t_stack **b);
+	-Reverse rotate:
+void    rra(t_stack **a);
+void    rrb(t_stack **b);
+void    rrr(t_stack **a, t_stack **b);
+
+3) algo
+4) parsing
+
+</div></body></html>
