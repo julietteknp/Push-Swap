@@ -6,7 +6,7 @@
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 17:29:19 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/18 12:48:34 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/18 16:43:47 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -44,6 +44,18 @@ void	add_back(t_stack **stack, t_stack *new)
 		tmp = tmp->next;
 	tmp->next = new;
 	new->next = NULL;
+}
+int	stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack != NULL)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
 }
 int	fake_atoi(char *argv)
 {
@@ -88,6 +100,22 @@ void    print_list(t_stack *stack)
 	}
 }	
 
+void	clear_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (*stack == NULL)
+		return;
+	while(*stack != NULL)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}	
+		
+
 int	main (int argc, char **argv)
 {
 	if (argc < 3)
@@ -105,6 +133,8 @@ int	main (int argc, char **argv)
 		argv++;
 	}
 	//t_stack *last = last_node(start);
-	print_list(init);
+	//print_list(init);
+	printf("%d", stack_size(init));
 	return (0);
+
 }
