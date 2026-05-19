@@ -6,7 +6,7 @@
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 17:29:19 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/18 16:43:47 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/19 15:34:41 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -34,7 +34,7 @@ void	add_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*tmp;
 
-	if (stack == NULL)
+	if (*stack == NULL)
 	{
 		*stack = new;
 		return ;
@@ -49,11 +49,16 @@ int	stack_size(t_stack *stack)
 {
 	int	size;
 
-	size = 0;
-	while (stack != NULL)
+	if (stack == NULL)
+		return (0);
+	else
 	{
-		size++;
-		stack = stack->next;
+		size = 1;
+		while (stack != NULL)
+		{
+			size++;
+			stack = stack->next;
+		}
 	}
 	return (size);
 }
@@ -89,6 +94,21 @@ t_stack	*last_node(t_stack *stack)
 	return (stack);
 }
 
+t_stack    *second_last(t_stack *stack)
+{
+        t_stack *next;
+        if (stack == NULL)
+                return (NULL);
+
+        next = stack->next;
+        while (next->next != NULL)
+        {
+                stack = stack->next;
+                next = stack->next;
+        }
+        return (stack);
+}
+
 void    print_list(t_stack *stack)
 {
 	if (stack == NULL)
@@ -114,7 +134,36 @@ void	clear_stack(t_stack **stack)
 	}
 	*stack = NULL;
 }	
-		
+
+int ascending(int a, int b)
+{
+    return (a <= b);
+}
+
+t_stack *sort_list(t_stack* lst, int (*cmp)(int, int))
+{
+	t_stack *head;
+	int tmp;
+
+	head = lst;
+	if (head == NULL || head->next == NULL)
+	{
+		return (NULL);
+	}
+	while (head != NULL && head->next != NULL)
+	{
+		if (cmp(head->value, head->next->value) == 0)
+		{
+			tmp = head->value;
+			head->value = head->next->value;
+			head->next->value = tmp;
+			head = lst;
+		}
+		else
+			head = head->next;
+	}
+	return (lst);
+}
 
 int	main (int argc, char **argv)
 {
@@ -134,7 +183,12 @@ int	main (int argc, char **argv)
 	}
 	//t_stack *last = last_node(start);
 	//print_list(init);
-	printf("%d", stack_size(init));
+	//printf("%d", stack_size(init));
+	sort_list(init, ascending);
+	while (init != NULL)
+	{
+		printf("%d\n", init->value);
+		init = init->next;
+	}
 	return (0);
-
 }
