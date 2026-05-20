@@ -6,23 +6,12 @@
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 15:46:05 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/20 12:37:51 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/20 13:13:03 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
 #include <stddef.h>
 #include "header.h"
-
-void swap(t_stack **stack)
-{
-	int	tmp;
-
-	if (*stack == NULL)
-		return;
-	tmp = (*stack)->value;
-	(*stack)->value = (*stack)->next->value;
-	(*stack)->next->value = tmp;
-}
 
 t_stack *new_node(int value)
 {
@@ -58,6 +47,32 @@ void    add_back(t_stack **stack, t_stack *new)
         new->next = NULL;
 }
 
+t_stack    *second_last(t_stack *stack)
+{
+        t_stack *next;
+        if (stack == NULL || stack->next == NULL)
+                return (NULL);
+
+        next = stack->next;
+        while (next->next != NULL)
+        {
+                stack = stack->next;
+                next = stack->next;
+        }
+        return (stack);
+}
+
+void swap(t_stack **stack)
+{
+        int     tmp;
+
+        if (*stack == NULL)
+                return;
+        tmp = (*stack)->value;
+        (*stack)->value = (*stack)->next->value;
+        (*stack)->next->value = tmp;
+}
+
 void    push(t_stack **dest, t_stack **src)
 {
         t_stack *node;
@@ -68,6 +83,25 @@ void    push(t_stack **dest, t_stack **src)
 	(*src) = (*src)->next;
 	node->next = NULL;
         add_front(dest, node);
+}
+
+void    rotate(t_stack **stack)
+{
+	if (stack == NULL || *stack == NULL)
+		return;
+	t_stack *new_last = *stack;
+	*stack = (*stack)->next;
+	new_last->next = NULL;
+	add_back(stack, new_last);
+}
+void    reverse_rotate(t_stack **stack)
+{	
+	if (!stack || !*stack || !(*stack)->next)
+        	return ;
+	t_stack *sec_last = second_last(*stack);
+	t_stack *new_first = sec_last->next;
+	sec_last->next = NULL;
+	add_front(stack, new_first);
 }
 
 void    print_list(t_stack *stack)
@@ -154,7 +188,13 @@ int     main (int argc, char **argv)
 	//print_list(init);
 	//t_stack *dst = dup_list(init);
 	t_stack *a = init;
-	t_stack *b = NULL;
+	/*reverse_rotate(&a);
+	printf("%s", "la liste a after reverse=\n");
+        print_list(a);*/
+	rotate(&a);
+	printf("%s", "la liste a after rotate=\n");
+        print_list(a);
+	/*t_stack *b = NULL;
 	push(&b, &a);
 	printf("%s", "la liste a=\n");
 	print_list(a);
@@ -164,6 +204,6 @@ int     main (int argc, char **argv)
         printf("%s", "la liste a=\n");
         print_list(a);
         printf("%s", "la liste b=\n");
-        print_list(b);
+        print_list(b);*/
         return (0);
 }
