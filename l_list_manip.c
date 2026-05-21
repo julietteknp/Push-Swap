@@ -6,7 +6,7 @@
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 17:29:19 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/19 15:34:41 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/20 12:48:25 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -97,7 +97,7 @@ t_stack	*last_node(t_stack *stack)
 t_stack    *second_last(t_stack *stack)
 {
         t_stack *next;
-        if (stack == NULL)
+        if (stack == NULL || stack->next == NULL)
                 return (NULL);
 
         next = stack->next;
