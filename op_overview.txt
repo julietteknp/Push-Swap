@@ -1,0 +1,132 @@
+========================
+PUSH_SWAP - OPERATIONS
+========================
+
+LINKED LIST :
+
+HEAD
+ ↓
+[5] -> [4] -> [3] -> NULL
+
+
+--------------------------------
+SWAP
+--------------------------------
+
+swap(stack)
+
+Échange les 2 premiers nodes.
+
+Avant :
+5 -> 4 -> 3
+
+Après :
+4 -> 5 -> 3
+
+Wrappers :
+sa(a)
+sb(b)
+ss(a,b)
+
+
+--------------------------------
+PUSH
+--------------------------------
+
+push(dest, src)
+
+Déplace le 1er node de src
+vers le début de dest.
+
+Avant :
+
+A : 5 -> 4 -> 3
+B : 8 -> 7
+
+push(B, A)
+
+Après :
+
+A : 4 -> 3
+B : 5 -> 8 -> 7
+
+IMPORTANT :
+- on déplace le vrai node
+- on ne copie rien
+
+Wrappers :
+pb(a,b) = push(b,a)
+pa(a,b) = push(a,b)
+
+
+--------------------------------
+ROTATE
+--------------------------------
+
+rotate(stack)
+
+Le 1er devient dernier.
+
+Avant :
+5 -> 4 -> 3 -> 2 -> 1
+
+Après :
+4 -> 3 -> 2 -> 1 -> 5
+
+Wrappers :
+ra(a)
+rb(b)
+rr(a,b)
+
+
+--------------------------------
+REVERSE ROTATE
+--------------------------------
+
+reverse_rotate(stack)
+
+Le dernier devient premier.
+
+Avant :
+5 -> 4 -> 3 -> 2 -> 1
+
+Après :
+1 -> 5 -> 4 -> 3 -> 2
+
+Wrappers :
+rra(a)
+rrb(b)
+rrr(a,b)
+
+
+--------------------------------
+MENTAL MODEL
+--------------------------------
+
+rotate :
+premier -> dernier
+
+reverse rotate :
+dernier -> premier
+
+push :
+déplacer le head d'une stack
+vers une autre
+
+swap :
+échanger les 2 premiers
+
+
+--------------------------------
+IMPORTANT
+--------------------------------
+
+Les opérations modifient surtout :
+- le HEAD
+- quelques next
+
+Pas toute la liste.
+
+On reconnecte des nodes.
+On ne recrée presque jamais
+de nouveaux nodes.
