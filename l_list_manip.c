@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   l_list_manip.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
+/*   By: jkonop <jkonop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 17:29:19 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/20 12:48:25 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/26 11:20:23 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 #include "header.h"
 
 t_stack	*new_node(int value)
@@ -62,7 +62,7 @@ int	stack_size(t_stack *stack)
 	}
 	return (size);
 }
-int	fake_atoi(char *argv)
+int	safe_atoi(char *argv)
 {
 	int	result;
 	int	sign;
@@ -165,7 +165,7 @@ t_stack *sort_list(t_stack* lst, int (*cmp)(int, int))
 	return (lst);
 }
 
-int	main (int argc, char **argv)
+/*int	main (int argc, char **argv)
 {
 	if (argc < 3)
 	       return (0);
@@ -175,7 +175,7 @@ int	main (int argc, char **argv)
 	//t_stack *start = init;
 	while (*argv)
 	{	
-		t_stack *node = new_node(fake_atoi(*argv));
+		t_stack *node = new_node(safe_atoi(*argv));
 		if (node == NULL)
 			return (1);
 		add_back(&init, node);
@@ -190,5 +190,4 @@ int	main (int argc, char **argv)
 		printf("%d\n", init->value);
 		init = init->next;
 	}
-	return (0);
-}
+	return (0);*/

@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   op.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
+/*   By: jkonop <jkonop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 15:46:05 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/20 13:13:03 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/21 15:20:16 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+
 #include <stddef.h>
 #include "header.h"
 
@@ -66,8 +66,8 @@ void swap(t_stack **stack)
 {
         int     tmp;
 
-        if (*stack == NULL)
-                return;
+        if (!stack || !*stack || !(*stack)->next)
+                return ;
         tmp = (*stack)->value;
         (*stack)->value = (*stack)->next->value;
         (*stack)->next->value = tmp;
@@ -89,6 +89,8 @@ void    rotate(t_stack **stack)
 {
 	if (stack == NULL || *stack == NULL)
 		return;
+        if ((*stack)->next == NULL)
+                return;
 	t_stack *new_last = *stack;
 	*stack = (*stack)->next;
 	new_last->next = NULL;
@@ -133,6 +135,21 @@ int     stack_size(t_stack *stack)
         return (size);
 }
 
+void	clear_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (*stack == NULL)
+		return;
+	while(*stack != NULL)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}	
+
 int     fake_atoi(char *argv)
 {
         int     result;
@@ -167,7 +184,7 @@ t_stack	*dup_list(t_stack *list)
 	}
 	return(copy_start);
 }
-int     main (int argc, char **argv)
+/*int     main (int argc, char **argv)
 {
         if (argc < 3)
                return (0);
@@ -188,13 +205,13 @@ int     main (int argc, char **argv)
 	//print_list(init);
 	//t_stack *dst = dup_list(init);
 	t_stack *a = init;
-	/*reverse_rotate(&a);
+	reverse_rotate(&a);
 	printf("%s", "la liste a after reverse=\n");
-        print_list(a);*/
+        print_list(a);
 	rotate(&a);
 	printf("%s", "la liste a after rotate=\n");
         print_list(a);
-	/*t_stack *b = NULL;
+	t_stack *b = NULL;
 	push(&b, &a);
 	printf("%s", "la liste a=\n");
 	print_list(a);
@@ -204,6 +221,6 @@ int     main (int argc, char **argv)
         printf("%s", "la liste a=\n");
         print_list(a);
         printf("%s", "la liste b=\n");
-        print_list(b);*/
+        print_list(b);
         return (0);
-}
+}*/
