@@ -6,7 +6,7 @@
 /*   By: jkonop <jkonop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 11:08:55 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/21 16:13:24 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/28 17:14:49 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void    rrr(t_stack **a, t_stack **b)
     write(1, "rrr\n", 4);
 }
 
-int main(int argc, char **argv)
+/*int main(int argc, char **argv)
 {
     if (argc != 3)
         return (0);
@@ -130,4 +130,4 @@ int main(int argc, char **argv)
     clear_stack(&list_a);
     clear_stack(&list_b);
     return (0);
-}
+}*/

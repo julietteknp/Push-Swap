@@ -6,7 +6,7 @@
 /*   By: jkonop <jkonop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 17:29:19 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/26 11:20:23 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/28 15:50:35 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_stack	*new_node(int value)
 	if (node == NULL)
 		return (NULL);
 	node->value = value;
+	node->index = -1;
 	node->next = NULL;
 	return (node);
 }

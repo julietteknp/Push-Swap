@@ -6,7 +6,7 @@
 /*   By: jkonop <jkonop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 15:46:05 by jkonop            #+#    #+#             */
-/*   Updated: 2026/05/21 15:20:16 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/05/28 17:52:03 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,24 @@ void    reverse_rotate(t_stack **stack)
 	add_front(stack, new_first);
 }
 
-void    print_list(t_stack *stack)
+void    print_list_value(t_stack *stack)
 {
         if (stack == NULL)
                 return ;
         while (stack != NULL)
         {
                 printf("%d\n", stack->value);
+                stack = stack->next;
+        }
+}
+
+void    print_list_index(t_stack *stack)
+{
+        if (stack == NULL)
+                return ;
+        while (stack != NULL)
+        {
+                printf("%d\n", stack->index);
                 stack = stack->next;
         }
 }
