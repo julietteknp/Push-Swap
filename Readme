@@ -1,0 +1,5 @@
+A modifier ulterieurement
+
+Pour l'instant main dans parsing.c
+--> pour compiler utiliser:
+cc -Wall -Werror -Wextra parsing.c index.c op.c push_swap_op.c utils.c medium.c -o parsing

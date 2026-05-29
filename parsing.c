@@ -134,17 +134,34 @@ int main(int argc, char **argv)
 {
     int     bench;
     int     algo;
-
     t_stack *a;
+    t_stack *b;
+
     if (argc < 2)
         return (0);
     a = NULL;
     if (parse_args(argv, &a, &bench, &algo))
         return (1);
-    print_list_value(a);
+    b = NULL;
+    //print_list_value(a);
     set_index(a);
+    //printf("%c", '\n');
+    //print_list_index(a);
+    //printf("%c", '\n');
+    put_a_in_b(&a, &b);
     printf("%c", '\n');
-    print_list_index(a);
+    //print_list_value(a);
+    //print_list_value(b);
+    put_b_in_a(&a, &b);
+    printf("%c", '\n');
+    print_list_value(a);
+    /*printf("%d", stack_size(a));
+    printf("%c", '\n');
+    printf("%d", number_of_chunk(a));
+    printf("%c", '\n');
+    printf("%d", size_of_chunk(a));
+    print_chunk(a);*/
+
     // algo de tri
 
     clear_stack(&a);
